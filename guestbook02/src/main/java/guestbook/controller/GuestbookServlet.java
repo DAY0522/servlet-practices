@@ -41,15 +41,14 @@ public class GuestbookServlet extends HttpServlet {
             new GuestbookDao().deleteByIdAndPassword(id, password);
 
             response.sendRedirect("/guestbook02/gb");
-        } else{
-        List<GuestbookVo> list = new GuestbookDao().findAll();
-        request.setAttribute("list", list);
+        } else {
+            List<GuestbookVo> list = new GuestbookDao().findAll();
+            request.setAttribute("list", list);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
-        rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
+            rd.forward(request, response);
+        }
     }
-
-}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
